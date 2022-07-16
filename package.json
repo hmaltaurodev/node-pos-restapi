@@ -1,0 +1,19 @@
+{
+  "name": "restapi",
+  "version": "1.0.0",
+  "description": "Especialização NodeJs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "npm"
+  ],
+  "author": "Henrique Augusto Maltauro",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
