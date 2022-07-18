@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 
+const addressModel = mongoose.model('Address');
 const personModel = mongoose.model('Person');
 
 module.exports = {
     getAllPersons: async (req, res, next) => {
         try {
-            const persons = await personModel.find().select('name lastName status');
+            const persons = await personModel.find();
 
             res.status(200).json({
                 count: persons.length,
@@ -14,11 +15,11 @@ module.exports = {
                         id: person._id,
                         name: person.name,
                         lastName: person.lastName,
+                        phone: person.phone,
+                        email: person.email,
                         status: person.status,
-                        request: {
-                            type: 'GET',
-                            url: 'http://localhost:3000/persons/' + person._id
-                        }
+                        createdAt: person.createdAt,
+                        updatedAt: person.updatedAt
                     }
                 })
             });
@@ -28,10 +29,10 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
     getPersonById: async (req, res, next) => {
         try {
-            const id = req.params.personId;
-            const person = await personModel.findOne({ _id: id });
+            const person = await personModel.findOne({ _id: req.params.personId });
 
             if (!person) {
                 res.status(404).json('Person not found!');
@@ -54,6 +55,7 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
     postPerson: async (req, res, next) => {
         try {
             let person = new personModel({
@@ -74,13 +76,7 @@ module.exports = {
                     lastName: person.lastName,
                     phone: person.phone,
                     email: person.email,
-                    status: person.status,
-                    createdAt: person.createdAt,
-                    updatedAt: person.updatedAt,
-                    request: {
-                        type: 'GET',
-                        url: 'http://localhost:3000/persons/' + person._id
-                    }
+                    status: person.status
                 }
             });
         }
@@ -89,15 +85,16 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
     patchPersonById: async (req, res, next) => {
-        const id = req.params.personId;
-        const updateFields = {};
-
-        Object.entries(req.body).map(item => {
-            updateFields[item[0]] = item[1];
-        });
-
         try {
+            const id = req.params.personId;
+            const updateFields = {};
+
+            Object.entries(req.body).map(item => {
+                updateFields[item[0]] = item[1];
+            });
+
             const status = await personModel.updateOne(
                 { _id: id },
                 { $set: updateFields }
@@ -106,11 +103,7 @@ module.exports = {
             res.status(200).json({
                 message: 'Person updated successfully!',
                 status: status,
-                updateFields: updateFields,
-                request: {
-                    type: 'GET',
-                    url: 'http://localhost:3000/persons/' + id
-                }
+                updateFields: updateFields
             });
         }
         catch (err) {
@@ -118,14 +111,28 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+
     deletePersonById: async (req, res, next) => {
         try {
             const id = req.params.personId;
+            const person = await personModel.findOne({ _id: id });
+
+            if (!person) {
+                res.status(404).json('Person not found!');
+                return;
+            }
+
             const status = await personModel.deleteOne({ _id: id });
+            const statusAddresses = await addressModel.deleteMany({ person: id });
 
             res.status(200).json({
-                message: 'Person deleted successfully!'
-            })
+                message: 'Person deleted successfully!',
+                status: status,
+                addresses: {
+                    message: 'Person-related addresses deleted successfully!',
+                    status: statusAddresses
+                }
+            });
         }
         catch (err) {
             console.log(err);
