@@ -136,7 +136,7 @@ module.exports = {
                     city: address.city,
                     uf: address.uf
                 }
-            })
+            });
         }
         catch (err) {
             console.log(err);
