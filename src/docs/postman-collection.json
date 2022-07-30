@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "14f152fa-ed97-4dbf-a2ae-d711d4ecd56f",
+		"name": "RestAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20265811"
+	},
+	"item": [
+		{
+			"name": "Person",
+			"item": [
+				{
+					"name": "/persons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/persons",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/persons/:personId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/persons/:personId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								":personId"
+							],
+							"variable": [
+								{
+									"key": "personId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/persons",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"lastName\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"status\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/persons",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/persons/:personId",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"lastName\": \"\",\r\n    \"phone\": \"\",\r\n    \"email\": \"\",\r\n    \"status\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/persons/:personId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								":personId"
+							],
+							"variable": [
+								{
+									"key": "personId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/persons/:personId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/persons/:personId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								":personId"
+							],
+							"variable": [
+								{
+									"key": "personId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "/addresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/addresses",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/addresses/:addressId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/addresses/:addressId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addresses",
+								":addressId"
+							],
+							"variable": [
+								{
+									"key": "addressId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/addresses/person/:personId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/addresses/person/:personId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addresses",
+								"person",
+								":personId"
+							],
+							"variable": [
+								{
+									"key": "personId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/addresses",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"person\": \"\",\r\n    \"cep\": \"\",\r\n    \"place\": \"\",\r\n    \"number\": \"\",\r\n    \"complement\": \"\",\r\n    \"district\": \"\",\r\n    \"city\": \"\",\r\n    \"uf\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/addresses",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/addresses/:addressId",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"person\": \"\",\r\n    \"cep\": \"\",\r\n    \"place\": \"\",\r\n    \"number\": \"\",\r\n    \"complement\": \"\",\r\n    \"district\": \"\",\r\n    \"city\": \"\",\r\n    \"uf\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/addresses/:addressId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addresses",
+								":addressId"
+							],
+							"variable": [
+								{
+									"key": "addressId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/addresses/:addressId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/addresses/:addressId",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"addresses",
+								":addressId"
+							],
+							"variable": [
+								{
+									"key": "addressId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api-docs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api-docs",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

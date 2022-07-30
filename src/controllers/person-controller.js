@@ -68,8 +68,8 @@ module.exports = {
 
             person = await person.save();
 
-            res.status(200).json({
-                message: 'Person saved successfully!',
+            res.status(201).json({
+                message: 'Person successfully saved!',
                 createdPerson: {
                     id: person._id,
                     name: person.name,
@@ -101,7 +101,7 @@ module.exports = {
             );
 
             res.status(200).json({
-                message: 'Person updated successfully!',
+                message: 'Person successfully updated!',
                 status: status,
                 updateFields: updateFields
             });
@@ -126,10 +126,10 @@ module.exports = {
             const statusAddresses = await addressModel.deleteMany({ person: id });
 
             res.status(200).json({
-                message: 'Person deleted successfully!',
+                message: 'Person successfully deleted!',
                 status: status,
                 addresses: {
-                    message: 'Person-related addresses deleted successfully!',
+                    message: 'Addresses related to person successfully deleted!',
                     status: statusAddresses
                 }
             });

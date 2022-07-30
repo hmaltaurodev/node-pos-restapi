@@ -1,5 +1,9 @@
-# Pós Graduação UNIPAR 2022
+# Postgraduate UNIPAR 2022
 
-## Especialização NodeJs
+## Specialization NodeJs
 
-> Api criada para trabalho final da materia de NodeJs.
+> Api created for final work on NodeJs  
+> Create by: Henrique Augusto Maltauro
+
+Api runs on port 3000  
+It's all documented with swagger, which can be accessed by the route `/api-docs/`

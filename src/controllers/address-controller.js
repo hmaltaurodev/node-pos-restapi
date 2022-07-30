@@ -124,7 +124,7 @@ module.exports = {
             address = await address.save();
 
             res.status(201).json({
-                message: 'Address saved successfully!',
+                message: 'Address successfully saved!',
                 createdAddress: {
                     id: address._id,
                     person: address.person,
@@ -159,7 +159,7 @@ module.exports = {
             );
 
             res.status(200).json({
-                message: 'Address updated successfully!',
+                message: 'Address successfully updated!',
                 status: status,
                 updateFields: updateFields
             });
@@ -183,7 +183,7 @@ module.exports = {
             const status = await addressModel.deleteOne({ _id: id });
 
             res.status(200).json({
-                message: 'Address deleted successfully!',
+                message: 'Address successfully deleted!',
                 status: status
             });
         }

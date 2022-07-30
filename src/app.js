@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express');
 
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -40,14 +41,17 @@ app.use(cors);
 app.use('/persons', personRoutes);
 app.use('/addresses', addressRoutes);
 
+let swaggerSpec = require('./config/swagger');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use('/api', (req, res, next) => {
     res.status(200).json({
-        message: 'Henrique\'s RestAPI!'
+        message: 'API is working!'
     });
 });
 
 app.use((req, res, next) => {
-    const error = new Error('Not Found');
+    const error = new Error('Not found');
     error.status = 404;
     next(error);
 });
